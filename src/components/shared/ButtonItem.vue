@@ -1,6 +1,11 @@
 <template>
   <button @click="$emit('click')" :style="btnStyles" class="btn">
-    <span :class="`fas fa-${icon}`" />
+    <span
+    v-if="icon"
+    :class="`${iconSet} ${icon}`" />
+    <span
+    v-if="text"
+    v-text="text"/>
   </button>
 </template>
 
@@ -9,8 +14,14 @@ export default {
   name: 'ButtonItem',
   props: {
     icon: {
+      type: String
+    },
+    iconSet: {
       type: String,
-      required: true
+      default: 'fas'
+    },
+    text: {
+      type: String
     },
     fontSize: {
       type: Number,

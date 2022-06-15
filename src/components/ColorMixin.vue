@@ -8,7 +8,7 @@
       @decrement="decrement" />
 
     <!-- result box -->
-    <result-box
+    <results-box
       @refresh="refresh"
       :mixtures="mixtures" />
 
@@ -17,7 +17,7 @@
 
 <script>
 import MixturesList from './MixturesList'
-import ResultBox from './ResultBox'
+import ResultsBox from './ResultsBox'
 
 export default {
   name: 'ColorMixin',
@@ -55,7 +55,7 @@ export default {
   },
   components: {
     MixturesList,
-    ResultBox
+    ResultsBox
   }
 }
 </script>
