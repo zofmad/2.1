@@ -1,13 +1,10 @@
 <template>
   <div id="app">
     <div class="container">
-
       <!-- header -->
       <app-header />
       <app-menu />
-      <!-- color mixin -->
-      <color-mixin />
-
+      <router-view/>
     </div>
   </div>
 </template>
@@ -15,14 +12,12 @@
 <script>
 import './styles/global.scss'
 import AppHeader from './components/AppHeader'
-import ColorMixin from './components/ColorMixin'
 import AppMenu from './components/AppMenu'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
-    ColorMixin,
     AppMenu
   }
 }
@@ -35,6 +30,4 @@ export default {
   text-align: center;
   padding: 2rem;
 }
-
-
 </style>
