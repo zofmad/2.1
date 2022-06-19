@@ -34,15 +34,18 @@
         @click="() => {}"
       />
     </router-link>
-    <modal-item v-if="modalVisible" @cancel="hideModal">
-      <template #header> About the app </template>
+   <fade-animation-item>
+      <modal-item v-if="modalVisible" @cancel="hideModal">
+        <template #header> About the app </template>
 
-      <template #body> Mix three colors to create the perfect one! </template>
+        <template #body> Mix three colors to create the perfect one! </template>
 
-      <template #footer>
-        <button-item icon="pi pi-thumbs-up" />
-      </template>
-    </modal-item>
+        <template #footer>
+          <button-item icon="pi pi-thumbs-up" />
+        </template>
+      </modal-item>
+
+    </fade-animation-item>
   </div>
 </template>
 
@@ -50,6 +53,7 @@
 import FlaskItem from './shared/FlaskItem'
 import ButtonItem from './shared/ButtonItem'
 import ModalItem from './shared/ModalItem'
+import FadeAnimationItem from './shared/FadeAnimationItem'
 import modalMixin from '../mixins/ModalMixin'
 
 export default {
@@ -57,7 +61,8 @@ export default {
   components: {
     FlaskItem,
     ButtonItem,
-    ModalItem
+    ModalItem,
+    FadeAnimationItem
   },
   mixins: [modalMixin],
   props: {
@@ -94,5 +99,26 @@ export default {
 <style scoped lang="scss">
 button {
   margin: 0.5rem;
+}
+
+.slide-fade-enter-from {
+  opacity: 0;
+}
+
+.slide-fade-enter-to {
+  opacity: 1;
+}
+
+.slide-fade-enter-active {
+  transition: opacity .5s;
+}
+.slide-fade-leave-from {
+  opacity: 1;
+}
+.slide-fade-leave-to {
+  opacity: 0;
+}
+.slide-fade-leave-active {
+  transition: opacity .5s;
 }
 </style>

@@ -2,8 +2,8 @@
   <!-- mixtures -->
   <ul class="mixtures">
     <flask-item
+    v-for="(mixture, index) in mixtures"
       :key="index"
-      v-for="(mixture, index) in mixtures"
       :variant="mixture.variant"
       :amount="mixture.amount"
       @increment="$emit('increment', index)"
@@ -16,13 +16,13 @@
 import FlaskItem from './shared/FlaskItem'
 export default {
   name: 'Mixtures',
+  components: { FlaskItem },
   props: {
     mixtures: {
       type: Array,
       required: true
     }
-  },
-  components: { FlaskItem }
+  }
 }
 </script>
 

@@ -3,14 +3,15 @@
 
     <!-- mixtures list -->
     <mixtures-list
+      ref="flaskk"
       :mixtures="mixtures"
       @increment="increment"
       @decrement="decrement" />
 
     <!-- result box -->
     <results-box
-      @refresh="refresh"
-      :mixtures="mixtures" />
+      :mixtures="mixtures"
+      @refresh="refresh" />
 
   </div>
 </template>
@@ -21,6 +22,10 @@ import ResultsBox from './ResultsBox'
 
 export default {
   name: 'ColorMixin',
+  components: {
+    MixturesList,
+    ResultsBox
+  },
   data: () => ({
     mixtures: [
       {
@@ -52,10 +57,6 @@ export default {
     refresh () {
       this.mixtures = this.mixtures.map(item => ({ ...item, amount: 50 }))
     }
-  },
-  components: {
-    MixturesList,
-    ResultsBox
   }
 }
 </script>

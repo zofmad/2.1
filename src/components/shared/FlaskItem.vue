@@ -1,10 +1,10 @@
 <template>
-  <div class="flask" :style="flaskStyle">
+    <div @animationEnd="isAnimated = false" class="flask animate__animated" :class="animateClass" :style="flaskStyle">
     <button-item
       v-if="buttonsVisible"
       class="flask__btn flask__btn--left"
       icon="pi pi-arrow-down"
-      @click="$emit('decrement')"
+      @click="$emit('decrement'); addZoomIn()"
     />
 
     <div :class="fillClasses" :style="fillStyle" />
@@ -14,7 +14,7 @@
       class="flask__btn flask__btn--right"
       icon="pi pi-arrow-up"
       :movement="-0.5"
-      @click="$emit('increment')"
+      @click="$emit('increment'); addZoomIn()"
     />
   </div>
 </template>
@@ -24,6 +24,9 @@ import ButtonItem from './ButtonItem'
 
 export default {
   name: 'FlaskItem',
+  components: {
+    ButtonItem
+  },
   props: {
     size: {
       type: Number,
@@ -44,6 +47,9 @@ export default {
       default: true
     }
   },
+  data: () => ({
+    isAnimated: false
+  }),
   computed: {
     flaskStyle () {
       return {
@@ -62,15 +68,20 @@ export default {
       }
 
       return style
+    },
+    animateClass () {
+      return this.isAnimated ? 'animate__shakeY' : ''
     }
   },
-  components: {
-    ButtonItem
+  methods: {
+    addZoomIn () {
+      this.isAnimated = true
+    }
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .flask {
   display: block;
   border: 10px solid #ddd;
@@ -128,4 +139,5 @@ export default {
     }
   }
 }
+
 </style>

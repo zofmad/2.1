@@ -4,13 +4,19 @@
       <!-- header -->
       <app-header />
       <app-menu />
-      <router-view/>
+      <router-view v-slot="{ Component }">
+        <slide-fade-animation-item class="animate__faster">
+          <component :is="Component" />
+        </slide-fade-animation-item>
+      </router-view>
     </div>
   </div>
 </template>
 
 <script>
 import './styles/global.scss'
+import 'animate.css/animate.min.css'
+import SlideFadeAnimationItem from '@/components/shared/SlideFadeAnimationItem'
 import AppHeader from './components/AppHeader'
 import AppMenu from './components/AppMenu'
 
@@ -18,7 +24,8 @@ export default {
   name: 'App',
   components: {
     AppHeader,
-    AppMenu
+    AppMenu,
+    SlideFadeAnimationItem
   }
 }
 </script>
