@@ -48,8 +48,8 @@ export default {
 
 <style lang="scss">
 .fog {
-  background-color: #21D4FD;
-  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+  background-color: $blue;
+  background-image: linear-gradient(19deg, $blue 0%, $violet 100%);
   position: fixed;
   top: 0;
   left: 0;
@@ -66,7 +66,7 @@ export default {
   margin: auto auto;
   border-radius: 2rem;
   box-shadow: 0 0 20px 20px rgba(0,0,0,0.1);
-  color: #637892;
+  color: $dark-blue;
 
   &__body {
     font-size: 1rem;

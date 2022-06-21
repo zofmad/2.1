@@ -10,6 +10,7 @@
         </slide-fade-animation-item>
       </router-view>
     </div>
+    <Message class="animate__animated animate__bounce animate__delay-2s" severity="warn" :closable="true" :sticky="true">Warning! This app is still in development...</Message>
   </div>
 </template>
 
@@ -19,14 +20,27 @@ import 'animate.css/animate.min.css'
 import SlideFadeAnimationItem from '@/components/shared/SlideFadeAnimationItem'
 import AppHeader from './components/AppHeader'
 import AppMenu from './components/AppMenu'
+import Message from 'primevue/message'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
     AppMenu,
-    SlideFadeAnimationItem
+    SlideFadeAnimationItem,
+    Message
   }
+  // data: () => ({
+  //   isAnimated: false
+  // }),
+  // computed: {
+  //   animateClass () {
+  //     return this.isAnimated ? 'animate__bounce' : ''
+  //   }
+  // },
+  // mounted () {
+  //   setTimeout(() => { this.isAnimated = true }, 2000)
+  // }
 }
 </script>
 

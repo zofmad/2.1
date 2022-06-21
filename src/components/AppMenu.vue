@@ -6,6 +6,9 @@
 import Menubar from 'primevue/menubar'
 
 export default {
+  components: {
+    Menubar
+  },
   data () {
     return {
       items: [
@@ -26,9 +29,6 @@ export default {
         }
       ]
     }
-  },
-  components: {
-    Menubar
   }
 }
 </script>
@@ -38,8 +38,8 @@ button {
     margin: 0.5rem;
 }
 .app-menu {
-   border-radius: 1rem;
-  box-shadow: 0 20px 40px 0 rgba(107,154,212,.3);
+  border-radius: 1rem;
+  box-shadow: $flask-box-shadow;
   overflow: hidden;
 }
 </style>

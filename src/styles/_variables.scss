@@ -1,21 +1,12 @@
-* {
-  box-sizing: border-box;
-}
 
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-  background: #f2f8ff;
-  color:  #000000;
-}
+$flask-box-shadow: 0 20px 40px 0 rgba(107, 154, 212, 0.3);
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-p {
-  font-size: 1rem;
-  color: #637892;
-  padding: 0 1rem;
-}
+$grey: #9a9a9a;
+$light-blue: #e8fdff;
+$dark-blue: #637892;
+$light-grey: #ddd;
+$blue: #21D4FD;
+$violet: #B721FF;
+$orange: #ff7d3b;
+$black: #2e561c;
+$sea: #25b6bf;

@@ -1,5 +1,5 @@
 <template>
-    <div @animationEnd="isAnimated = false" class="flask animate__animated" :class="animateClass" :style="flaskStyle">
+    <div class="flask animate__animated" :class="animateClass" :style="flaskStyle" @animationend="isAnimated = false">
     <button-item
       v-if="buttonsVisible"
       class="flask__btn flask__btn--left"
@@ -76,6 +76,8 @@ export default {
   methods: {
     addZoomIn () {
       this.isAnimated = true
+      // this.$refs.flask.classList.add('animate__animated', 'animate__shakeY')
+      // setTimeout(() => { this.$refs.flask.classList.remove('animate__animated', 'animate__shakeY') }, 300)
     }
   }
 }
@@ -84,14 +86,14 @@ export default {
 <style lang="scss">
 .flask {
   display: block;
-  border: 10px solid #ddd;
+  border: 10px solid $light-grey;
   border-radius: 50%;
   margin: 2rem 1rem;
   position: relative;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  box-shadow: 0 20px 40px 0 rgba(107, 154, 212, 0.3);
+  box-shadow: $flask-box-shadow;
 
   &__fill {
     width: 100%;
@@ -99,8 +101,8 @@ export default {
     transition: 0.2s;
 
     &--red {
-      background-color: #ff7d3b;
-      background-image: linear-gradient(189deg, #ff7d3b 0%, #ff2525 74%);
+      background-color: $orange;
+      background-image: linear-gradient(189deg, $orange 0%, #ff2525 74%);
     }
 
     &--green {
@@ -109,8 +111,8 @@ export default {
     }
 
     &--blue {
-      background-color: #25b6bf;
-      background-image: linear-gradient(183deg, #25b6bf 0%, #0070a2 100%);
+      background-color: $sea;
+      background-image: linear-gradient(183deg, $sea 0%, #0070a2 100%);
     }
   }
 
@@ -121,8 +123,8 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #9a9a9a;
-    background-image: linear-gradient(0deg, #9a9a9a 0%, #e8fdff 100%);
+    background-color: $grey;
+    background-image: linear-gradient(0deg, $grey 0%, $light-blue 100%);
     opacity: 0.5;
   }
   &__btn {
