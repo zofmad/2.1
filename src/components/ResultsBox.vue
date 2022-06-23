@@ -11,6 +11,7 @@
     />
 
     <p>{{ mixtureEffectFill }}</p>
+    <p>There are {{$store.state.colors.length}} colors in your pocket!</p>
     <button-item
       :size="4"
       :movement="-0.5"
@@ -34,6 +35,14 @@
         @click="() => {}"
       />
     </router-link>
+
+    <button-item
+      :size="4"
+      :movement="-0.5"
+      :font-size="1.5"
+      icon="pi pi-pencil"
+      @click="saveColor"
+    />
    <fade-animation-item>
       <modal-item v-if="modalVisible" @cancel="hideModal">
         <template #header> About the app </template>
@@ -92,6 +101,12 @@ export default {
   methods: {
     openModal () {
       this.modalVisible = true
+    },
+    saveColor () {
+      const [red, green, blue] = this.mixtures.map((item) =>
+        Math.floor(item.amount * 2.5)
+      )
+      this.$store.commit('ADD_COLOR', { red, green, blue })
     }
   }
 }
