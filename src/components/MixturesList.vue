@@ -6,6 +6,7 @@
       :key="index"
       :variant="mixture.variant"
       :amount="mixture.amount"
+      :delete-button-visible="false"
       @increment="$emit('increment', index)"
       @decrement="$emit('decrement', index)"
     />

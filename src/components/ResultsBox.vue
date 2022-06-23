@@ -5,6 +5,7 @@
     <flask-item
       :color="mixtureEffectFill"
       :buttons-visible="false"
+      :delete-button-visible="false"
       :size="15"
       :amount="100"
       :style="flaskItemStyle"
@@ -64,6 +65,7 @@ import ButtonItem from './shared/ButtonItem'
 import ModalItem from './shared/ModalItem'
 import FadeAnimationItem from './shared/FadeAnimationItem'
 import modalMixin from '../mixins/ModalMixin'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'ResultsBox',
@@ -106,8 +108,9 @@ export default {
       const [red, green, blue] = this.mixtures.map((item) =>
         Math.floor(item.amount * 2.5)
       )
-      this.$store.commit('ADD_COLOR', { red, green, blue })
-    }
+      this.addColor({ red, green, blue })
+    },
+    ...mapMutations({ addColor: 'ADD_COLOR' })
   }
 }
 </script>

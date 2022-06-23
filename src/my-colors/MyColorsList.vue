@@ -10,6 +10,7 @@
         :size="15"
         :amount="100"
         :style="flaskItemStyle"
+         @delete="deleteColor(index)"
       />
 
     </li>
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import FlaskItem from '@/components/shared/FlaskItem'
 
 export default {
@@ -35,7 +36,11 @@ export default {
   methods: {
     mixtureEffectFill (color) {
       return `rgb(${color.red}, ${color.green}, ${color.blue})`
-    }
+    },
+    deleteColor (index) {
+      this.deleteColor(index)
+    },
+    ...mapMutations({ deleteColor: 'DELETE_COLOR' })
   },
   components: {
     FlaskItem

@@ -16,6 +16,14 @@
       :movement="-0.5"
       @click="$emit('increment'); addZoomIn()"
     />
+
+     <button-item
+      v-if="deleteButtonVisible"
+      class="flask__btn flask__btn--center"
+      icon="pi pi-times"
+      :movement="0.5"
+      @click="$emit('delete');"
+    />
   </div>
 </template>
 
@@ -43,6 +51,10 @@ export default {
       type: String
     },
     buttonsVisible: {
+      type: Boolean,
+      default: true
+    },
+    deleteButtonVisible: {
       type: Boolean,
       default: true
     }
@@ -139,6 +151,12 @@ export default {
     &--left {
       left: 1rem;
     }
+
+    &--center {
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
   }
 }
 
