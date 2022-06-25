@@ -12,13 +12,13 @@
     />
 
     <p>{{ mixtureEffectFill }}</p>
-    <p>There are {{$store.state.colors.length}} colors in your pocket!</p>
+    <p>There are {{numberOfColors}} colors in your pocket!</p>
     <button-item
       :size="4"
       :movement="-0.5"
       :font-size="1.5"
       icon="pi pi-refresh "
-      @click="$emit('refresh')"
+      @click="refresh"
     />
     <button-item
       :size="4"
@@ -65,7 +65,7 @@ import ButtonItem from './shared/ButtonItem'
 import ModalItem from './shared/ModalItem'
 import FadeAnimationItem from './shared/FadeAnimationItem'
 import modalMixin from '../mixins/ModalMixin'
-import { mapMutations } from 'vuex'
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
   name: 'ResultsBox',
@@ -76,28 +76,12 @@ export default {
     FadeAnimationItem
   },
   mixins: [modalMixin],
-  props: {
-    mixtures: {
-      type: Array,
-      required: true
-    }
-  },
   emits: ['refresh'],
   computed: {
-    mixtureEffectFill () {
-      const [redCol, greenCol, blueCol] = this.mixtures.map((item) =>
-        Math.floor(item.amount * 2.5)
-      )
-      return `rgb(${redCol}, ${greenCol}, ${blueCol})`
-    },
+    ...mapState(['mixtures']),
+    ...mapGetters(['numberOfColors', 'mixtureEffectFill', 'rgbLink']),
     flaskItemStyle () {
       return 'margin: 3rem auto'
-    },
-    rgbLink () {
-      const [redCol, greenCol, blueCol] = this.mixtures.map((item) =>
-        Math.floor(item.amount * 2.5)
-      )
-      return `/color/${redCol}/${greenCol}/${blueCol}`
     }
   },
   methods: {
@@ -105,12 +89,10 @@ export default {
       this.modalVisible = true
     },
     saveColor () {
-      const [red, green, blue] = this.mixtures.map((item) =>
-        Math.floor(item.amount * 2.5)
-      )
-      this.addColor({ red, green, blue })
+      this.addColor(this.mixtures)
     },
-    ...mapMutations({ addColor: 'ADD_COLOR' })
+    ...mapActions(['addColor']),
+    ...mapMutations({ refresh: 'REFRESH_MIXTURE' })
   }
 }
 </script>

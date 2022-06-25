@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import MyColorsList from './MyColorsList'
 import PageTitleItem from '@/components/shared/PageTitleItem'
 
@@ -15,11 +14,7 @@ export default {
   components: {
     MyColorsList,
     PageTitleItem
-  },
-  data: () => ({
-    // isAnimated: true
-  }),
-  computed: mapState(['colors'])
+  }
 }
 </script>
 

@@ -7,22 +7,23 @@
       :variant="mixture.variant"
       :amount="mixture.amount"
       :delete-button-visible="false"
-      @increment="$emit('increment', index)"
-      @decrement="$emit('decrement', index)"
+      @increment="increment(index)"
+      @decrement="decrement(index)"
     />
   </ul>
 </template>
 
 <script>
 import FlaskItem from './shared/FlaskItem'
+import { mapState, mapMutations } from 'vuex'
+
 export default {
   name: 'Mixtures',
   components: { FlaskItem },
-  props: {
-    mixtures: {
-      type: Array,
-      required: true
-    }
+  computed: { ...mapState(['mixtures']) },
+  methods: {
+    ...mapMutations({ increment: 'INCREMENT_COLOR' }),
+    ...mapMutations({ decrement: 'DECREMENT_COLOR' })
   }
 }
 </script>

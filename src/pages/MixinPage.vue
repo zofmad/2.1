@@ -6,7 +6,6 @@
 </template>
 
 <script>
-// import './styles/global.scss'
 import ColorMixin from '@/components/ColorMixin'
 
 export default {

@@ -2,16 +2,10 @@
   <div>
 
     <!-- mixtures list -->
-    <mixtures-list
-      ref="flaskk"
-      :mixtures="mixtures"
-      @increment="increment"
-      @decrement="decrement" />
+    <mixtures-list />
 
     <!-- result box -->
-    <results-box
-      :mixtures="mixtures"
-      @refresh="refresh" />
+    <results-box />
 
   </div>
 </template>
@@ -19,6 +13,7 @@
 <script>
 import MixturesList from './MixturesList'
 import ResultsBox from './ResultsBox'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'ColorMixin',
@@ -26,37 +21,13 @@ export default {
     MixturesList,
     ResultsBox
   },
-  data: () => ({
-    mixtures: [
-      {
-        variant: 'red',
-        amount: 20
-      },
-      {
-        variant: 'green',
-        amount: 70
-      },
-      {
-        variant: 'blue',
-        amount: 40
-      }]
-  }),
+  computed: {
+    ...mapState(['mixtures'])
+  },
   methods: {
-    increment (index) {
-      const mixture = this.mixtures[index]
-      if (mixture.amount === 100) return false
-      mixture.amount++
-    },
-
-    decrement (index) {
-      const mixture = this.mixtures[index]
-      if (mixture.amount === 0) return false
-      mixture.amount--
-    },
-
-    refresh () {
-      this.mixtures = this.mixtures.map(item => ({ ...item, amount: 50 }))
-    }
+    ...mapMutations({ increment: 'INCREMENT_COLOR' }),
+    ...mapMutations({ decrement: 'DECREMENT_COLOR' }),
+    ...mapMutations({ refresh: 'REFRESH_MIXTURE' })
   }
 }
 </script>

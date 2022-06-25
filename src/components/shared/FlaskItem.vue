@@ -29,6 +29,7 @@
 
 <script>
 import ButtonItem from './ButtonItem'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'FlaskItem',
@@ -88,9 +89,10 @@ export default {
   methods: {
     addZoomIn () {
       this.isAnimated = true
-      // this.$refs.flask.classList.add('animate__animated', 'animate__shakeY')
-      // setTimeout(() => { this.$refs.flask.classList.remove('animate__animated', 'animate__shakeY') }, 300)
-    }
+    },
+    ...mapMutations({ increment: 'INCREMENT_COLOR' }),
+    ...mapMutations({ decrement: 'DECREMENT_COLOR' })
+
   }
 }
 </script>

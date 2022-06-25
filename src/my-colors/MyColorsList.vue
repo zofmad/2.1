@@ -5,7 +5,7 @@
       v-for="(color, index) in colors"
       :key="index">
       <flask-item
-        :color="mixtureEffectFill(color)"
+        :color="color"
         :buttons-visible="false"
         :size="15"
         :amount="100"
@@ -19,24 +19,18 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import FlaskItem from '@/components/shared/FlaskItem'
 
 export default {
   name: 'MyColorsPage',
-  data: () => ({
-    // isAnimated: true
-  }),
   computed: {
-    ...mapState(['colors']),
+    ...mapGetters({ colors: 'RGBColors' }),
     flaskItemStyle () {
       return 'margin: 3rem auto'
     }
   },
   methods: {
-    mixtureEffectFill (color) {
-      return `rgb(${color.red}, ${color.green}, ${color.blue})`
-    },
     deleteColor (index) {
       this.deleteColor(index)
     },

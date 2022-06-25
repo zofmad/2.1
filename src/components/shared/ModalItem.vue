@@ -1,14 +1,3 @@
-<!-- <template>
-  <button @click="$emit('click')" :style="btnStyles" class="btn">
-    <span
-    v-if="icon"
-    :class="`${iconSet} ${icon}`" />
-    <span
-    v-if="text"
-    v-text="text"/>
-  </button>
-</template> -->
-
 <template>
   <div class="fog">
     <div class="modal">

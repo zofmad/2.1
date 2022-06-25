@@ -5,16 +5,9 @@
 </template>
 
 <script>
-// import './styles/global.scss'
-// import AppHeader from './components/AppHeader'
 
 export default {
   name: 'ErrorPage'
-  // components: {
-  //   AppHeader,
-  //   ColorMixin,
-  //   AppMenu
-  // }
 }
 </script>
 

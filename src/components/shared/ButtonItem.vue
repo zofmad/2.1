@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('click')" :style="btnStyles" class="btn">
+  <button :style="btnStyles" class="btn">
     <span
     v-if="icon"
     :class="`${iconSet} ${icon}`" />

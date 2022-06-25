@@ -8,6 +8,7 @@
     <flask-item
       :color="mixtureEffectFill"
       :buttons-visible="false"
+      :delete-button-visible="false"
       :size="15"
       :amount="100"
       :style="flaskItemStyle"
